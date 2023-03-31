@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos</title>
+</head>
+
+<body>
+    <h1>Documentos</h1>
+    <p>Ejercicio: Hacer una lista de documentos, con un formulario
+        para agregar documentos con información
+        correspondiente al título, al autor, al contenido
+        temático y a la fecha de creación.</p>
+    <table>
+        <thead>
+            <td>Titulo</td>
+            <td>Autor</td>
+            <td>Contenido temático</td>
+            <td>Fecha de creación</td>
+        </thead>
+
+        <thead>
+            <td><input type="text" name="" value="" id="titulo"></td>
+            <td><input type="text" name="" value="" id="autor"></td>
+            <td><input type="text" name="" value="" id="contenido"></td>
+            <td><input type="text" name="" value="" id="fecha"></td>
+        </thead>
+
+        <thead>
+            <td colspan=4>
+                <button type="button" id="btnAgregar">Agregar</button>
+                <button type="button" id="btnAutor">Autor con mas documentos</button>
+                <button type="button" id="btnTituloModerno">Titulo mas moderno</button>
+                <button type="button" id="btnTituloAntiguo">Titulo mas antiguo</button>
+
+            </td>
+        </thead>
+
+        <tbody id="tblDocumentos">
+
+        </tbody>
+
+    </table>
+    <div id="total"></div>
+    <script src="documentos.js"></script>
+</body>
+
+</html>
