@@ -1,0 +1,20 @@
+body {
+    background-image: url('https://www.latirus.com/blog/wp-content/uploads/2023/02/pokeapi.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+#pokemon-container {
+    font-size: 24px;
+    color: #151315;
+
+    
+}
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
