@@ -7,7 +7,7 @@ import { CreateVehiculoDto } from '../dto/create-vehiculos.dto';
 
 @Injectable() 
 export class VehiculoService{
-    private Vehiculos : Vehiculo[] = [];
+    private vehiculos : Vehiculo[] = [];
     private url: string =  "./src/vehiculos/vehiculos.txt" ;
 
     constructor() {
@@ -28,15 +28,24 @@ export class VehiculoService{
               parseInt(partes[5]),
             );
     
-            this.Vehiculos.push(vehiculo);
+            this.vehiculos.push(vehiculo);
           }
         }
       }
     getVehiculos(): Vehiculo[]{
-        return this.Vehiculos
+        return this.vehiculos
     }
+    
+  getAutos(): Vehiculo[] {
+    return this.vehiculos.filter(vehiculo => !vehiculo.capCarga);
+  }
+
+  getCamionetas(): Vehiculo[] {
+    return this.vehiculos.filter(vehiculo => vehiculo.capCarga);
+  }
+
     getVehiculoByPatente(patente: string): Vehiculo{
-        const vehiculo = this.Vehiculos.find((vehiculo) => vehiculo.patente === patente);
+        const vehiculo = this.vehiculos.find((vehiculo) => vehiculo.patente === patente);
         if (!vehiculo){
             throw new NotFoundException();
         }
@@ -54,11 +63,11 @@ export class VehiculoService{
               CreateVehiculoDto.capCarga
               );
         
-            const dataAppend = this.Vehiculos.length
+            const dataAppend = this.vehiculos.length
               ? "\n" + newVehiculo.toString()
               : newVehiculo.toString();
         
-            this.Vehiculos.push(newVehiculo);
+            this.vehiculos.push(newVehiculo);
         
             fs.appendFileSync(this.url, dataAppend);
           }
