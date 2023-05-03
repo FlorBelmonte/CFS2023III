@@ -71,4 +71,16 @@ export class VehiculoService{
         
             fs.appendFileSync(this.url, dataAppend);
           }
+ deleteVehiculo(patente: string): boolean {
+            const pos = this.vehiculos.findIndex((e) => {
+              return e.patente == patente;
+            }); 
+        
+            if (pos != -1) {
+              this.vehiculos.splice(pos, 1);
+              return true;
+            }
+        
+            return false;
+          }
     }
