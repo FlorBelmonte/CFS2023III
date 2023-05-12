@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException, Module } from '@nestjs/common';
 import { Vehiculo } from "src/class/vehiculos";
 import * as fs from "fs";
 import { CreateVehiculoDto } from '../dto/create-vehiculos.dto';
@@ -71,6 +71,22 @@ export class VehiculoService{
         
             fs.appendFileSync(this.url, dataAppend);
           }
+
+    updateVehiculo(nuevoVehiculo: Vehiculo, patente: string): string{
+      const vehiculoExistente = this.vehiculos.find((vehiculo) => vehiculo.patente === patente);
+
+      if (vehiculoExistente) {
+        vehiculoExistente.setMarca(nuevoVehiculo.marca);
+        vehiculoExistente.setModelo(nuevoVehiculo.modelo);
+        vehiculoExistente.setAño(nuevoVehiculo.año);
+        vehiculoExistente.setPrecio(nuevoVehiculo.precio);
+        vehiculoExistente.setcapCarga(nuevoVehiculo.capCarga);
+  
+        return 'ok';
+      } else {
+        return '404';
+      }
+    }
  deleteVehiculo(patente: string): boolean {
             const pos = this.vehiculos.findIndex((e) => {
               return e.patente == patente;
@@ -83,4 +99,5 @@ export class VehiculoService{
         
             return false;
           }
-    }
+  
+        }

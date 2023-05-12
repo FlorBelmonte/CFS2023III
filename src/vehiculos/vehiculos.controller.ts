@@ -34,6 +34,11 @@ import { CreateVehiculoDto } from "src/dto/create-vehiculos.dto";
 postVehiculo(@Body() CreateVehiculoDto: CreateVehiculoDto) {
   return this.vehiculoService.createVehiculo(CreateVehiculoDto);
 }
+@Put(':patente')
+public updateVehiculo(@Body() vehiculo: Vehiculo, @Param('patente')patente:string): string{
+  return this.vehiculoService.updateVehiculo(vehiculo, patente)
+}
+
 @Delete(':patente')
    deleteVehiculo(@Param('patente')patente: string): boolean{
     return this.vehiculoService.deleteVehiculo(patente)
